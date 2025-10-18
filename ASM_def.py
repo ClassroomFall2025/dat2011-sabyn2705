@@ -1,8 +1,11 @@
 #ASM.01
 from ASM_CL import NhanVien, TiepThi, TruongPhong
 
-def nhap_danh_sach_nv():
-     n = int(input("Nhập số lượng nhân viên: "))
+ds_nv = []
+
+#1
+def nhap_danh_sach_nv():                          
+    n = int(input("Nhập số lượng nhân viên: "))
     for i in range(n):
         print(f"\n--- Nhập nhân viên thứ {i+1} ---")
         loai = input("Loại nhân viên (1: Hành chính | 2: Tiếp thị | 3: Trưởng phòng): ")
@@ -31,8 +34,14 @@ def luu_vao_file():
 def doc_tu_file():
     pass
 
-def tim_nv_theo_ma():
-    pass
+#3
+def tim_nv_theo_ma():                             
+    ma = input("Nhập mã nhân viên cần tìm: ")
+    for nv in ds_nv:
+        if nv.ma_nv == ma:
+            nv.xuat()
+            return
+    print("Không tìm thấy nhân viên có mã này.")
 
 def xoa_nv_theo_ma():
     pass
@@ -40,14 +49,36 @@ def xoa_nv_theo_ma():
 def capnhat_nv_theo_ma():
     pass
 
+#6
 def tim_nv_theo_khoang_luong():
-    pass
+    min_l = float(input("Nhập lương tối thiểu: "))
+    max_l = float(input("Nhập lương tối đa: "))
+    found = False
 
+    for nv in ds_nv:
+        if min_l <= nv.getThuNhap() <= max_l:
+            nv.xuat()
+            found = True
+
+    if not found:
+        print("Không có nhân viên trong khoảng lương này.")
+
+#7
 def sapxep_theo_hoten():
-    pass
+    ds_nv.sort(key=lambda nv: nv.ho_ten)
+    print("\n Danh sách nhân viên (sắp xếp theo họ tên):")
+    for nv in ds_nv:
+        nv.xuat()
 
+#8
 def sapxep_theo_thunhap():
-    pass
-
+    ds_nv.sort(key=lambda nv: nv.getThuNhap(), reverse=True)
+    print("\n Danh sách nhân viên (sắp xếp theo thu nhập):")
+    for nv in ds_nv:
+        nv.xuat()
+#9
 def top5_thunhap():
-    pass
+    print("\n Top 5 nhân viên có thu nhập cao nhất:")
+    top5 = sorted(ds_nv, key=lambda nv: nv.getThuNhap(), reverse=True)[:5]
+    for nv in top5:
+        nv.xuat()
