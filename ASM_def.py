@@ -1,6 +1,5 @@
-#ASM.01
+#ASM.02
 from ASM_CL import NhanVien, TiepThi, TruongPhong
-
 ds_nv = []
 
 #1
@@ -15,8 +14,8 @@ def nhap_danh_sach_nv():
         luong = float(input("Lương cơ bản: "))
 
         if loai == "2": 
-            doanh_so = float(input("Doanh số: "))
-            hoa_hong = float(input("Hoa hồng (ví dụ: 0.05): "))
+            doanh_so = float(input("Doanh số: "))  
+            hoa_hong = float(input("Hoa hồng (ví dụ: 0.05): "))  
             nv = TiepThi(ma_nv, ho_ten, luong, doanh_so, hoa_hong)
         elif loai == "3":  
             trach_nhiem = float(input("Lương trách nhiệm: "))
@@ -24,15 +23,17 @@ def nhap_danh_sach_nv():
         else: 
             nv = NhanVien(ma_nv, ho_ten, luong)
 
-        ds_nv.append(nv)
+        ds_nv.append(nv) 
+    
+    print("\nĐã nhập danh sách nhân viên thành công!")
 
-    print("\n Đã nhập danh sách nhân viên thành công!")
 
 def luu_vao_file():
-    pass
+    print("Chức năng lưu vào file chưa được triển khai.")
 
 def doc_tu_file():
-    pass
+    print("Chức năng lưu vào file chưa được triển khai.")
+
 
 #3
 def tim_nv_theo_ma():                             
@@ -44,10 +45,12 @@ def tim_nv_theo_ma():
     print("Không tìm thấy nhân viên có mã này.")
 
 def xoa_nv_theo_ma():
-    pass
+    print("Chức năng lưu vào file chưa được triển khai.")
+
 
 def capnhat_nv_theo_ma():
-    pass
+    print("Chức năng lưu vào file chưa được triển khai.")
+
 
 #6
 def tim_nv_theo_khoang_luong():
